@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Database ERD</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .foreign-key {
+            color: blue;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+        }
+        .relationship-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Database ERD</h2>
+
+    <div class="container">
+        <table class="relationship-table">
+            <thead>
+                <tr>
+                    <th>Table 1</th>
+                    <th>Shared Column (Primary/Foreign Key)</th>
+                    <th>Table 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Employees</td>
+                    <td>emp_no</td>
+                    <td>Salaries</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>emp_no</td>
+                    <td>Titles</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>emp_no</td>
+                    <td>Dept_Employee</td>
+                </tr>
+                <tr>
+                    <td>Departments</td>
+                    <td>dept_no</td>
+                    <td>Dept_Employee</td>
+                </tr>
+                <tr>
+                    <td>Departments</td>
+                    <td>dept_no</td>
+                    <td>Dept_Manager</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>emp_no</td>
+                    <td>Dept_Manager</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <h3>Departments</h3>
+            <table id="departments">
+                <tr><th>Field</th><th>Type</th></tr>
+                <tr><td>dept_no (PK)</td><td>String</td></tr>
+                <tr><td>dept_name</td><td>String</td></tr>
+            </table>
+        </div>
+
+        <div>
+            <h3>Employees</h3>
+            <table id="employees">
+                <tr><th>Field</th><th>Type</th></tr>
+                <tr><td>emp_no (PK)</td><td>Integer</td></tr>
+                <tr><td>birth_date</td><td>Date</td></tr>
+                <tr><td>first_name</td><td>String</td></tr>
+                <tr><td>last_name</td><td>String</td></tr>
+                <tr><td>gender</td><td>String</td></tr>
+                <tr><td>hire_date</td><td>Date</td></tr>
+            </table>
+        </div>
+
+        <div>
+            <h3>Salaries</h3>
+            <table id="salaries">
+                <tr><th>Field</th><th>Type</th></tr>
+                <tr><td>emp_no (PK, <span class="foreign-key">FK</span>)</td><td>Integer</td></tr>
+                <tr><td>salary</td><td>Decimal</td></tr>
+                <tr><td>from_date (PK)</td><td>Date</td></tr>
+                <tr><td>to_date</td><td>Date</td></tr>
+            </table>
+        </div>
+
+        <div>
+            <h3>Titles</h3>
+            <table id="titles">
+                <tr><th>Field</th><th>Type</th></tr>
+                <tr><td>emp_no (PK, <span class="foreign-key">FK</span>)</td><td>Integer</td></tr>
+                <tr><td>title</td><td>String</td></tr>
+                <tr><td>from_date (PK)</td><td>Date</td></tr>
+                <tr><td>to_date</td><td>Date</td></tr>
+            </table>
+        </div>
+
+        <div>
+            <h3>Dept_Employee</h3>
+            <table id="dept_employee">
+                <tr><th>Field</th><th>Type</th></tr>
+                <tr><td>emp_no (PK, <span class="foreign-key">FK</span>)</td><td>Integer</td></tr>
+                <tr><td>dept_no (PK, <span class="foreign-key">FK</span>)</td><td>String</td></tr>
+                <tr><td>from_date (PK)</td><td>Date</td></tr>
+                <tr><td>to_date</td><td>Date</td></tr>
+            </table>
+        </div>
+
+        <div>
+            <h3>Dept_Manager</h3>
+            <table id="dept_manager">
+                <tr><th>Field</th><th>Type</th></tr>
+                <tr><td>dept_no (PK, <span class="foreign-key">FK</span>)</td><td>String</td></tr>
+                <tr><td>emp_no (PK, <span class="foreign-key">FK</span>)</td><td>Integer</td></tr>
+                <tr><td>from_date (PK)</td><td>Date</td></tr>
+                <tr><td>to_date</td><td>Date</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
